@@ -98,6 +98,7 @@ export const Information = () => {
 		return short_term,medium_term,long_term;
 	}, []);
 
+	console.log(topSongsShort);
 	return (
 		<>
 			<Container>
@@ -184,14 +185,24 @@ export const Information = () => {
 					<h1 style={{ textAlign: "left" }}>Your Top Songs</h1>
 				</div>
 				{chosenSongsLength &&
-					topSongsShort?.map((song) => {
+					chosenSongsLength?.map((song) => {
 						return (
-							<div style={{ width: "80%", border: "2px solid black" }}>
-								{/* <img src={song?.images[0].url} /> */}
-								<div>{song.name}</div>
-							</div>
+							<div style={{ width: "100%",border: "1px",
+        borderRadius: 15,
+        boxShadow: "5px 10px 10px #888888",
+        position:"relative" }}>
+					<div style={{display:"flex", alignItems:"center"}}>
+								<img src={song.album.images[0].url} style={{width:"35%", paddingRight:"10%",borderRadius: 10}} />
+								<div>
+								<p style={{margin:0}}>{song.name}</p>
+								<p style={{margin:0}}>{song.artists[0]?.name}</p>
+								</div>
+					</div>
+					</div>
 						);
 					})}
+					
+					
 			</Container>
 		</>
 	);
